@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import Header from './Components/header.js';
-import Contents from './Components/contents_list.js';
+import Contents from './Components/Contents.js';
 
 function App () {
   return (

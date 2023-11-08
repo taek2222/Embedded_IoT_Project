@@ -41,7 +41,7 @@ function Bulb() {
 const styles = StyleSheet.create({
   light_border: {
     // LED 박스
-    width: 330,
+    width: 340,
     height: 150,
     marginTop: 20,
     borderWidth: 2,
