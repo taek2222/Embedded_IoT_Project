@@ -1,18 +1,28 @@
 import React from "react";
+import { useState } from "react";
 import { View, Text, StyleSheet, Image, Button, Alert } from "react-native";
 
 function Bulb() {
+  const [imageUri, setImageUri] = useState("/Users/ohyeontaek/embedded/embedded/assets/contents/light_off.png");
   // LED
   const handlePress = async (action) => {
     try {
       const response = await fetch(
-        `http://<FLASK_SERVER_IP>:5000/led/${action}`,
+        `http://192.168.137.112:5000/led/${action}`,
         {
-          method: "POST",
+          method: 'POST',
         }
       );
       const data = await response.json();
-      Alert.alert(data.status);
+
+      if(data === 200) {
+        setImageUri("/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png"); // 전구 ON 이미지로 변경
+      } else if(data === 100) {
+        setImageUri("/Users/ohyeontaek/embedded/embedded/assets/contents/light_off.png"); // 전구 OFF 이미지로 변경
+      } else {
+        // 예상치 못한 상태 코드 처리
+        console.error("Unexpected status code:", data);
+      }
     } catch (error) {
       Alert.alert("Error", "Cannot communicate with the server");
     }
@@ -20,14 +30,14 @@ function Bulb() {
   return (
     <View style={styles.light_border}>
       <View>
-        <Image
-          source={{
-            uri: "/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png",
-          }}
+      <Image
+          source={{ uri: imageUri }}
           style={styles.light}
         />
         <Text style={styles.light_font}>
-          현재 : <Text style={{ color: "green" }}>ON</Text>
+          현재 : <Text style={{ color: imageUri === "/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png" ? "green" : "red" }}>
+            {imageUri === "/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png" ? 'ON' : 'OFF'}
+          </Text>
         </Text>
       </View>
       <View style={styles.button}>
