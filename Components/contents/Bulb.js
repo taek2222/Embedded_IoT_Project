@@ -4,7 +4,8 @@ import { View, Text, StyleSheet, Image, Button, Alert } from "react-native";
 
 function Bulb() {
   const [imageUri, setImageUri] = useState("/Users/ohyeontaek/embedded/embedded/assets/contents/light_off.png");
-  // LED
+
+  // LED 전구
   const handlePress = async (action) => {
     try {
       const response = await fetch(
@@ -27,6 +28,26 @@ function Bulb() {
       Alert.alert("Error", "Cannot communicate with the server");
     }
   };
+
+  //Dust 미세먼지
+  const dustPresss = async (action) => {
+    try{
+      const response = await fetch(
+        `http://192.168.137.83:5000/dust/${action}`,
+        {
+          method: 'POST',
+        }
+      );
+      const data = await response.json();
+      if(data) {
+        console.error(data);
+      }
+
+    } catch (error) {
+      console.error(data);
+    }
+  };
+
   return (
     <View style={styles.light_border}>
       <View>
@@ -43,6 +64,7 @@ function Bulb() {
       <View style={styles.button}>
         <Button title="LED ON" onPress={() => handlePress("on")} />
         <Button title="LED OFF" onPress={() => handlePress("off")} />
+        <Button title="LED aFF" onPress={() => dustPresss("live")} />
       </View>
     </View>
   );
