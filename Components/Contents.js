@@ -4,6 +4,7 @@ import { View, StyleSheet } from "react-native";
 import Bulb from "./contents/Bulb.js";
 import Temperature from "./contents/Temperature.js";
 import Fine_dust from "./contents/Fine_dust.js";
+import Humidity from "./contents/Humid.js";
 
 function Contents() {
   return (
@@ -14,6 +15,9 @@ function Contents() {
           <Temperature />
         </View>
         <Fine_dust />
+      </View>
+      <View style={styles.contents}>
+        <Humidity/>
       </View>
     </View>
   );
