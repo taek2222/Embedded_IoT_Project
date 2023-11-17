@@ -40,7 +40,7 @@ function Fine_dust() {
           }}
           style={styles.fine_dust}
         />
-        <Text style= {styles.fine_dust_value}>{dustData}</Text>
+        <Text style= {styles.fine_dust_value}>24</Text>
       </View>
     </View>
   );
