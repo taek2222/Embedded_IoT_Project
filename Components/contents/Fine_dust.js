@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { View, Image, Text, Button, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet } from "react-native";
 
 function Fine_dust() {
 
@@ -9,15 +9,13 @@ function Fine_dust() {
     // 미세먼지 데이터를 불러오는 함수
     const fetchDustData = async () => {
       try {
-        const response = await fetch('http://192.168.137.83:5000/dust/live', {
+        const response = await fetch('http://192.168.137.34:5000/dust/live', {
           method: 'POST',
         });
         const data = await response.json();
         setDustData(data.pm10_0);
-        console.log('Received data:', data.pm10_0);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setDustData(null); // 에러 발생시 데이터 초기화
       }
     };
   
@@ -40,7 +38,8 @@ function Fine_dust() {
           }}
           style={styles.fine_dust}
         />
-        <Text style= {styles.fine_dust_value}>24</Text>
+        <Text style={styles.fine_dust_value}>{dustData}</Text>
+        <Text style={styles.fine_dust_value_unit}>㎛</Text>
       </View>
     </View>
   );
@@ -72,10 +71,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   fine_dust_value: {
-    marginTop: 55,
-    marginLeft: 24,
-    fontSize: 40,
+    width: 45,
+    height: 40,
+    marginTop: 52,
+    marginLeft: 12,
+    fontSize: 35,
     fontWeight: "bold"
+  },
+  fine_dust_value_unit: {
+    marginTop: 67,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "gray"
   }
 });
 
