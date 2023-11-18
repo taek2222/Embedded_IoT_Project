@@ -9,7 +9,7 @@ function Bulb() {
   const handlePress = async (action) => {
     try {
       const response = await fetch(
-        `http://192.168.137.83:5000/led/${action}`,
+        `http://192.168.137.34:5000/led/${action}`,
         {
           method: 'POST',
         }
