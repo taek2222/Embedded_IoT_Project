@@ -20,7 +20,7 @@ function Hot_cold_fan() {
 const styles = StyleSheet.create({
   hc_fan_border: {
     // 냉온풍기 박스
-    width: 160,
+    width: 340,
     height: 150,
     marginTop: 5,
     borderWidth: 2,
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
   },
   hc_fan: {
     // 냉온풍기 사진
-    width: 70,
-    height: 70,
-    marginLeft: 9,
-    marginTop: 38,
+    width: 110,
+    height: 110,
+    marginLeft: 25,
+    marginTop: 20,
   },
   hc_fan_font: {
     marginTop: 7,
