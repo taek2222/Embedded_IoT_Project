@@ -3,7 +3,7 @@ import { useState } from "react";
 import { View, Text, StyleSheet, Image, Button, Alert } from "react-native";
 
 function Bulb() {
-  const [imageUri, setImageUri] = useState("/Users/ohyeontaek/embedded/embedded/assets/contents/light_off.png");
+  const [imageUri, setImageUri] = useState("/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png");
 
   // LED 전구
   const handlePress = async (action) => {
@@ -17,9 +17,9 @@ function Bulb() {
       const data = await response.json();
 
       if(data === 200) {
-        setImageUri("/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png"); // 전구 ON 이미지로 변경
+        setImageUri("/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png"); // 전구 ON 이미지로 변경
       } else if(data === 100) {
-        setImageUri("/Users/ohyeontaek/embedded/embedded/assets/contents/light_off.png"); // 전구 OFF 이미지로 변경
+        setImageUri("/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png"); // 전구 OFF 이미지로 변경
       } else {
         // 예상치 못한 상태 코드 처리
         console.error("Unexpected status code:", data);
@@ -37,8 +37,8 @@ function Bulb() {
           style={styles.light}
         />
         <Text style={styles.light_font}>
-          현재 : <Text style={{ color: imageUri === "/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png" ? "green" : "red" }}>
-            {imageUri === "/Users/ohyeontaek/embedded/embedded/assets/contents/light_on.png" ? 'ON' : 'OFF'}
+          현재 : <Text style={{ color: imageUri === "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png" ? "green" : "red" }}>
+            {imageUri === "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png" ? 'ON' : 'OFF'}
           </Text>
         </Text>
       </View>

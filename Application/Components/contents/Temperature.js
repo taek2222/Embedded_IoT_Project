@@ -36,9 +36,7 @@ function Temperature() {
       <Text style={styles.temperature_font}>실내 온도</Text>
       <View style={styles.temperature_border}>
         <Image
-          source={{
-            uri: "/Users/ohyeontaek/embedded/embedded/assets/contents/temperature.png",
-          }}
+          source={require('../../assets/contents/temperature.png')}
           style={styles.temperature}
         />
         <Text style={styles.temperature_value}>25</Text>

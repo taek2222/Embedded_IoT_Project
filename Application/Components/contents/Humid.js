@@ -6,14 +6,18 @@ function Humid() {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/weather/latest')
-        .then(response => response.json())
-        .then(data => {
+    const fetchWeatherData = () => {
+      fetch('http://localhost:8080/api/weather/latest')
+          .then(response => response.json())
+          .then(data => {
             setWeatherData(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            console.log("새로운 데이터", data);
+            setTimeout(fetchWeatherData, 3000); // 다음 요청 예약
+          })
+    };
+
+    fetchWeatherData();
+  return () => clearTimeout(fetchWeatherData); // 컴포넌트 해제 시 타임아웃 정리
 }, []);
 
 const isDataLoaded = weatherData && weatherData.temperature != null && weatherData.humidity != null;
@@ -23,9 +27,7 @@ const isDataLoaded = weatherData && weatherData.temperature != null && weatherDa
       <Text style={styles.humidity_font}>실내 습도</Text>
       <View style={styles.humidity_border}>
         <Image
-          source={{
-            uri: "/Users/ohyeontaek/embedded/embedded/assets/contents/humidity.png",
-          }}
+          source={require('../../assets/contents/humidity.png')}
           style={styles.humidity}
         />
         {isDataLoaded ? (<Text style={styles.humidity_value}>{weatherData.humidity}</Text>

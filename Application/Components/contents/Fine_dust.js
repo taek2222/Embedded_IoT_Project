@@ -34,9 +34,7 @@ function Fine_dust() {
       <Text style={styles.fine_dust_font}>실내 미세먼지</Text>
       <View style={styles.fine_dust_border}>
         <Image
-          source={{
-            uri: "/Users/ohyeontaek/embedded/embedded/assets/contents/fine_dust.png",
-          }}
+          source={require('../../assets/contents/fine_dust.png')}
           style={styles.fine_dust}
         />
         <Text style={styles.fine_dust_value}>{dustData}</Text>

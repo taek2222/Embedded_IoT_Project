@@ -37,22 +37,16 @@ function header() {
       <View style={styles.header}>
         <TouchableOpacity onPress={startRotation}>
           <Animated.Image
-            source={{
-              uri: "/Users/ohyeontaek/embedded/embedded/assets/header/refreash.png",
-            }}
+            source={require('../assets/header/refreash.png')}
             style={[{ width: 40, height: 40, marginLeft: 5 }, rotationStyles]}
           />
         </TouchableOpacity>
         <Image
-          source={{
-            uri: "/Users/ohyeontaek/embedded/embedded/assets/header/applogo.png",
-          }}
+          source={require('../assets/header/applogo.png')}
           style={{ width: 100, height: 40, marginLeft: 10 }}
         />
         <Image
-          source={{
-            uri: "/Users/ohyeontaek/D-D-D_Project1/assets/Image/Banner/option.png",
-          }}
+          source={require('../assets/header/option.png')}
           style={{ width: 40, height: 40 }}
         />
       </View>

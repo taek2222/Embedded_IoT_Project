@@ -7,9 +7,7 @@ function Hot_cold_fan() {
       <Text style={styles.hc_fan_font}>냉온풍기</Text>
       <View style={styles.hc_fan_border}>
         <Image
-          source={{
-            uri: "/Users/ohyeontaek/embedded/embedded/assets/contents/fan.png",
-          }}
+          source={require('../../assets/contents/fan.png')}
           style={styles.hc_fan}
         />
       </View>
