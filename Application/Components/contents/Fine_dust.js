@@ -14,6 +14,7 @@ function Fine_dust() {
         });
         const data = await response.json();
         setDustData(data.pm10_0);
+        console.log('서버로 전달 받은 미세먼지 데이터 : ', data.pm10_0);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

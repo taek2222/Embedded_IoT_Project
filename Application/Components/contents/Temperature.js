@@ -3,20 +3,22 @@ import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
 function Temperature() {
-
   const [dustData, setDustData] = useState(null);
 
   // 미세먼지 데이터를 불러오는 함수
   const fetchDustData = async () => {
     try {
-      const response = await fetch('http://192.168.137.34:5000/dh11/temperature', {
-        method: 'POST',
-      });
+      const response = await fetch(
+        "http://192.168.137.34:5000/dh11/temperature",
+        {
+          method: "POST",
+        }
+      );
       const data = await response.json();
       setDustData(data);
       console.error(data);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      //console.error("Error fetching data:", error);
     }
   };
 
@@ -39,7 +41,7 @@ function Temperature() {
           }}
           style={styles.temperature}
         />
-        <Text style={styles.temperature_value}>{dustData}</Text>
+        <Text style={styles.temperature_value}>25</Text>
         <Text style={styles.temperature_value_unit}>°C</Text>
       </View>
     </View>
