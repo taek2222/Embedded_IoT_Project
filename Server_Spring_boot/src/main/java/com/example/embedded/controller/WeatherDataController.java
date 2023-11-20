@@ -23,4 +23,8 @@ public class WeatherDataController {
         return service.getAllWeatherData();
     }
 
+    @GetMapping("/latest")
+    public WeatherData getLatestWeatherData() {
+        return service.getLatestWeatherData();
+    }
 }
