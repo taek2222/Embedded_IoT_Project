@@ -3,33 +3,24 @@ import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
 function Temperature() {
-  const [dustData, setDustData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
 
-  // 미세먼지 데이터를 불러오는 함수
-  const fetchDustData = async () => {
-    try {
-      const response = await fetch(
-        "http://192.168.137.34:5000/dh11/temperature",
-        {
-          method: "POST",
-        }
-      );
-      const data = await response.json();
-      setDustData(data);
-      console.error(data);
-    } catch (error) {
-      //console.error("Error fetching data:", error);
-    }
-  };
-
-  // 컴포넌트 마운트 시 및 5초마다 미세먼지 데이터 갱신
   useEffect(() => {
-    fetchDustData(); // 처음 마운트될 때 데이터 불러오기
-    const interval = setInterval(fetchDustData, 6000); // 5초마다 반복
+    const fetchWeatherData = () => {
+      fetch('http://localhost:8080/api/weather/temperature')
+          .then(response => response.json())
+          .then(data => {
+            setWeatherData(data);
+            console.log("새로운 데이터 온도", data);
+            setTimeout(fetchWeatherData, 3000); // 3초 마다 예약
+          })
+    };
 
-    // 컴포넌트 언마운트 시 인터벌 정리
-    return () => clearInterval(interval);
-  }, []);
+    fetchWeatherData();
+  return () => clearTimeout(fetchWeatherData); // 컴포넌트 해제 시 타임아웃 정리
+}, []);
+
+const isDataLoaded = weatherData && weatherData != null && weatherData != null;
 
   return (
     <View>
@@ -39,7 +30,10 @@ function Temperature() {
           source={require('../../assets/contents/temperature.png')}
           style={styles.temperature}
         />
-        <Text style={styles.temperature_value}>25</Text>
+        {isDataLoaded ? (<Text style={styles.temperature_value}>{weatherData}</Text>
+        ) : (
+          <Text>X</Text>
+        )}
         <Text style={styles.temperature_value_unit}>°C</Text>
       </View>
     </View>

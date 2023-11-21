@@ -7,12 +7,12 @@ function Humid() {
 
   useEffect(() => {
     const fetchWeatherData = () => {
-      fetch('http://localhost:8080/api/weather/latest')
+      fetch('http://localhost:8080/api/weather/humid')
           .then(response => response.json())
           .then(data => {
             setWeatherData(data);
-            console.log("새로운 데이터", data);
-            setTimeout(fetchWeatherData, 3000); // 다음 요청 예약
+            console.log("새로운 데이터 습도", data);
+            setTimeout(fetchWeatherData, 3000); // 3초 마다 예약
           })
     };
 
@@ -20,7 +20,7 @@ function Humid() {
   return () => clearTimeout(fetchWeatherData); // 컴포넌트 해제 시 타임아웃 정리
 }, []);
 
-const isDataLoaded = weatherData && weatherData.temperature != null && weatherData.humidity != null;
+const isDataLoaded = weatherData && weatherData != null && weatherData != null;
 
   return (
     <View>
@@ -30,7 +30,7 @@ const isDataLoaded = weatherData && weatherData.temperature != null && weatherDa
           source={require('../../assets/contents/humidity.png')}
           style={styles.humidity}
         />
-        {isDataLoaded ? (<Text style={styles.humidity_value}>{weatherData.humidity}</Text>
+        {isDataLoaded ? (<Text style={styles.humidity_value}>{weatherData}</Text>
         ) : (
           <Text>X</Text>
         )}
