@@ -33,4 +33,13 @@ public class WeatherDataController {
         return service.getTemperature();
     }
 
+    @GetMapping("/average/temperature")
+    public Double getAverageTemperature() {
+        return service.getAverageTemperature();
+    }
+
+    @GetMapping("/average/humidity")
+    public Double getAverageHumidity() {
+        return service.getAverageHumidity();
+    }
 }

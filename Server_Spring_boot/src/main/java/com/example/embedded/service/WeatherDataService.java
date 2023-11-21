@@ -33,4 +33,14 @@ public class WeatherDataService {
                 .getContent().get(0);
         return latestData != null ? latestData.getTemperature() : null;
     }
+
+    public Double getAverageTemperature() {
+        Object[] averages = repository.findAverageTemperatureAndHumidity();
+        return (Double) averages[0];
+    }
+
+    public Double getAverageHumidity() {
+        Object[] averages = repository.findAverageTemperatureAndHumidity();
+        return (Double) averages[1];
+    }
 }
