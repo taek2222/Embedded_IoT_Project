@@ -27,4 +27,15 @@ public class WeatherDataController {
     public WeatherData getLatestWeatherData() {
         return service.getLatestWeatherData();
     }
+
+    @GetMapping("/humid")
+    public Integer getHumidity() {
+        return service.getHumidity();
+    }
+
+    @GetMapping("/temperature")
+    public Integer getTemperature() {
+        return service.getTemperature();
+    }
+
 }

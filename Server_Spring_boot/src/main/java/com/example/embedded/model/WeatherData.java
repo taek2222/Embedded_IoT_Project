@@ -17,17 +17,17 @@ public class WeatherData {
     private Date recordDate;
 
     @Column(name = "temperature")
-    private Double temperature;
+    private Integer temperature;
 
     @Column(name = "humidity")
-    private Double humidity;
+    private Integer humidity;
 
     // 기본 생성자
     public WeatherData() {
     }
 
     // 모든 필드를 포함하는 생성자
-    public WeatherData(Long id, Date recordDate, Double temperature, Double humidity) {
+    public WeatherData(Long id, Date recordDate, Integer temperature, Integer humidity) {
         this.id = id;
         this.recordDate = recordDate;
         this.temperature = temperature;
@@ -51,19 +51,19 @@ public class WeatherData {
         this.recordDate = recordDate;
     }
 
-    public Double getTemperature() {
+    public Integer getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Double temperature) {
+    public void setTemperature(Integer temperature) {
         this.temperature = temperature;
     }
 
-    public Double getHumidity() {
+    public Integer getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Double humidity) {
+    public void setHumidity(Integer humidity) {
         this.humidity = humidity;
     }
 }

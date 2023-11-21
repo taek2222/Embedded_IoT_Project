@@ -22,8 +22,20 @@ public class WeatherDataService {
         return repository.findAll();
     }
 
-    public WeatherData getLatestWeatherData() {
+    public WeatherData getLatestWeatherData() { // 최신 데이터 전체 반환
         return repository.findAll(PageRequest.of(0, 1, Sort.by("recordDate").descending()))
                 .getContent().get(0);
+    }
+
+    public Integer getHumidity() { // 최신 데이터 중 습도만 반환
+        WeatherData latestData = repository.findAll(PageRequest.of(0, 1, Sort.by("recordDate").descending()))
+                .getContent().get(0);
+        return latestData != null ? latestData.getHumidity() : null;
+    }
+
+    public Integer getTemperature() { // 최신 데이터 중 온도만 반환
+        WeatherData latestData = repository.findAll(PageRequest.of(0, 1, Sort.by("recordDate").descending()))
+                .getContent().get(0);
+        return latestData != null ? latestData.getTemperature() : null;
     }
 }
