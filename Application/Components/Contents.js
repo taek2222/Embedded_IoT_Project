@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
+import * as Permissions from 'expo-permissions';
 
 import Bulb from "./contents/Bulb.js";
 import Temperature_Fine_dust from "./Temperature_Fine_dust.js";
@@ -7,13 +8,24 @@ import Humidity_Door from "./Humiditiy_Door.js";
 import Hot_cold_fan from "./contents/Hot_cold_fan.js";
 
 const DATA = [
-  { id: '1', Component: Bulb },
-  { id: '2', Component: Temperature_Fine_dust },
-  { id: '3', Component: Humidity_Door },
-  { id: '4', Component: Hot_cold_fan }
+  { id: "1", Component: Bulb },
+  { id: "2", Component: Temperature_Fine_dust },
+  { id: "3", Component: Humidity_Door },
+  { id: "4", Component: Hot_cold_fan },
 ];
 
 function Contents() {
+  useEffect(() => {
+    checkPermissions();
+  }, []);
+
+  const checkPermissions = async () => {
+    const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+    if (status !== 'granted') {
+      await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    }
+  };
+
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <item.Component />
@@ -24,10 +36,10 @@ function Contents() {
     <FlatList
       data={DATA}
       renderItem={renderItem}
-      keyExtractor={item => item.id}
+      keyExtractor={(item) => item.id}
     />
   );
-}
+};
 
 const styles = StyleSheet.create({
   item: {

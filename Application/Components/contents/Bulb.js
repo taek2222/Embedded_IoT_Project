@@ -1,51 +1,18 @@
 import React from "react";
-import { useState } from "react";
-import { View, Text, StyleSheet, Image, Button, Alert } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import Bulb_1 from "./Bulb/Bulb_1.js";
+import Bulb_2 from "./Bulb/Bulb_2.js";
+import Bulb_3 from "./Bulb/Bulb_3.js";
 
 function Bulb() {
-  const [imageUri, setImageUri] = useState("/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png");
-
-  // LED 전구
-  const handlePress = async (action) => {
-    try {
-      const response = await fetch(
-        `http://192.168.137.34:5000/led/${action}`,
-        {
-          method: 'POST',
-        }
-      );
-      const data = await response.json();
-
-      if(data === 200) {
-        setImageUri("/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png"); // 전구 ON 이미지로 변경
-      } else if(data === 100) {
-        setImageUri("/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png"); // 전구 OFF 이미지로 변경
-      } else {
-        // 예상치 못한 상태 코드 처리
-        console.error("Unexpected status code:", data);
-      }
-    } catch (error) {
-      Alert.alert("Error", "Cannot communicate with the server");
-    }
-  };
-  
   return (
     <View style={styles.light_border}>
-      <View>
-      <Image
-          source={{ uri: imageUri }}
-          style={styles.light}
-        />
-        <Text style={styles.light_font}>
-          현재 : <Text style={{ color: imageUri === "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png" ? "green" : "red" }}>
-            {imageUri === "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png" ? 'ON' : 'OFF'}
-          </Text>
-        </Text>
-      </View>
-      <View style={styles.button}>
-        <Button title="LED ON" onPress={() => handlePress("on")} />
-        <Button title="LED OFF" onPress={() => handlePress("off")} />
-      </View>
+      <Bulb_1/>
+      <View style={styles.line} />
+      <Bulb_2/>
+      <View style={styles.line} />
+      <Bulb_3/>
     </View>
   );
 }
@@ -60,25 +27,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     flexDirection: "row",
   },
-  light: {
-    // LED 전등 사진
-    width: 100,
-    height: 100,
-    marginLeft: 20,
-    marginTop: 10,
-  },
-  light_font: {
-    // LED 상태 글씨
-    marginLeft: 33,
-    marginTop: 5,
-    fontWeight: "bold",
-    fontSize: 17,
-  },
-  button: {
-    marginLeft: 60,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+  line: {
+    height: '70%', // 선의 높이
+    marginVertical: 30,
+    marginLeft: 18,
+    width: 4, // 선의 너비
+    backgroundColor: 'gray', // 선의 색
+    borderRadius: 100,
   },
 });
 
