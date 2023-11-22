@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
   },
   door: {
     // 문 사진
-    width: 60,
-    height: 70,
-    marginLeft: 25,
-    marginTop: 20,
+    width: 70,
+    height: 90,
+    marginLeft: 10,
+    marginTop: 25,
   },
   door_font: {
     marginTop: 7,
