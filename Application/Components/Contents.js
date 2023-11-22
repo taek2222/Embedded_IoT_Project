@@ -1,35 +1,38 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 
 import Bulb from "./contents/Bulb.js";
-import Temperature from "./contents/Temperature.js";
-import Fine_dust from "./contents/Fine_dust.js";
-import Humidity from "./contents/Humid.js";
+import Temperature_Fine_dust from "./Temperature_Fine_dust.js";
+import Humidity_Door from "./Humiditiy_Door.js";
 import Hot_cold_fan from "./contents/Hot_cold_fan.js";
 
+const DATA = [
+  { id: '1', Component: Bulb },
+  { id: '2', Component: Temperature_Fine_dust },
+  { id: '3', Component: Humidity_Door },
+  { id: '4', Component: Hot_cold_fan }
+];
+
 function Contents() {
-  return (
-    <View>
-      <Bulb />
-      <View style={styles.contents}>
-        <View style={{marginRight : 19}}>
-          <Temperature />
-        </View>
-        <Fine_dust />
-      </View>
-      <View style={styles.contents}>
-        <View style={{marginRight : 19}}>
-        <Humidity/>
-        </View>
-      </View>
-      <Hot_cold_fan/>
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <item.Component />
     </View>
+  );
+
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={renderItem}
+      keyExtractor={item => item.id}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  contents: {
+  item: {
     flexDirection: "row",
+    marginHorizontal: 16,
   },
 });
 
