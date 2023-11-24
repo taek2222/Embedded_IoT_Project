@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   View,
   Image,
@@ -6,8 +7,11 @@ import {
   Animated,
   TouchableOpacity,
 } from "react-native";
+import Modal from "./Modal.js";
 
 function header() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const rotateAnim = new Animated.Value(0);
 
   const startRotation = () => {
@@ -37,22 +41,28 @@ function header() {
       <View style={styles.header}>
         <TouchableOpacity onPress={startRotation}>
           <Animated.Image
-            source={require('../assets/header/refreash.png')}
+            source={require("../assets/header/refreash.png")}
             style={[{ width: 40, height: 40, marginLeft: 5 }, rotationStyles]}
           />
         </TouchableOpacity>
         <Image
-          source={require('../assets/header/applogo.png')}
+          source={require("../assets/header/applogo.png")}
           style={{ width: 100, height: 40, marginLeft: 10 }}
         />
-        <Image
-          source={require('../assets/header/report.png')}
-          style={{ width: 45, height: 45 }}
-        />
+        <View>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <Image
+              source={require("../assets/header/report.png")}
+              style={{ width: 45, height: 45 }}
+            />
+          </TouchableOpacity>
+          <Modal
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
+        </View>
       </View>
-      <View
-        style={styles.underbar}
-      />
+      <View style={styles.underbar} />
     </View>
   );
 }
@@ -70,8 +80,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     height: 4,
     borderRadius: 5,
-    backgroundColor: "#61677A", 
-    width: 350
+    backgroundColor: "#61677A",
+    width: 350,
   },
 });
 
