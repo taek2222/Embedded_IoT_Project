@@ -1,5 +1,12 @@
-import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from "react";
+import {
+  Modal,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
+import Modal_Title from "./Modal/Modal_Title.js";
 
 const Modal_ = ({ modalVisible, setModalVisible }) => {
   return (
@@ -11,7 +18,7 @@ const Modal_ = ({ modalVisible, setModalVisible }) => {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>모달 내부의 컨텐츠</Text>
+          <Modal_Title/>
           <TouchableOpacity
             style={styles.button}
             onPress={() => setModalVisible(false)}
@@ -27,40 +34,42 @@ const Modal_ = ({ modalVisible, setModalVisible }) => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5
+    elevation: 5,
+    width: 400,
+    height: 300,
   },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    backgroundColor: '#2196F3'
+    backgroundColor: "#2196F3",
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center'
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
   modalText: {
     marginBottom: 15,
-    textAlign: 'center'
-  }
+    textAlign: "center",
+  },
 });
 
 export default Modal_;
