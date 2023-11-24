@@ -46,8 +46,8 @@ function header() {
           style={{ width: 100, height: 40, marginLeft: 10 }}
         />
         <Image
-          source={require('../assets/header/option.png')}
-          style={{ width: 40, height: 40 }}
+          source={require('../assets/header/report.png')}
+          style={{ width: 45, height: 45 }}
         />
       </View>
       <View
