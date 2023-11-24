@@ -7,6 +7,9 @@ import {
   StyleSheet
 } from "react-native";
 import Modal_Title from "./Modal/Modal_Title.js";
+import Avg_Temperature from "./Modal/Avg_Temperature.js";
+import Avg_Fine_dust from "./Modal/Avg_Fine_dust.js";
+import Avg_Humid from "./Modal/Avg_Humid.js";
 
 const Modal_ = ({ modalVisible, setModalVisible }) => {
   return (
@@ -19,6 +22,9 @@ const Modal_ = ({ modalVisible, setModalVisible }) => {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Modal_Title/>
+          <Avg_Temperature/>
+          <Avg_Fine_dust/>
+          <Avg_Humid/>
           <TouchableOpacity
             style={styles.button}
             onPress={() => setModalVisible(false)}
@@ -52,10 +58,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    width: 400,
-    height: 300,
+    width: 350,
+    height: 415,
   },
   button: {
+    marginTop: 15,
     borderRadius: 20,
     padding: 10,
     elevation: 2,
