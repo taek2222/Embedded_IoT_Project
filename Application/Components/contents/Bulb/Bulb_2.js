@@ -7,7 +7,7 @@ function Bulb_1() {
 
   const handleToggle = async () => {
     const action = isLedOn ? "off" : "on";
-
+  
     try {
       const response = await fetch(`http://192.168.137.34:5000/led/27/${action}`, {
         method: "POST",

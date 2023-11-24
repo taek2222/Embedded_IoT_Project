@@ -7,7 +7,7 @@ function Bulb_1() {
 
   const handleToggle = async () => {
     const action = isLedOn ? "off" : "on";
-
+    
     try {
       const response = await fetch(`http://192.168.137.34:5000/led/17/${action}`, {
         method: "POST",
@@ -15,7 +15,7 @@ function Bulb_1() {
       const data = await response.json();
 
       if (data === 200 || data === 100) {
-        setIsLedOn(!isLedOn); // LED 상태 토글:
+        setIsLedOn(!isLedOn); // LED 상태 토글
       } else {
         console.error("Unexpected status code:", data);
       }
@@ -42,7 +42,7 @@ function Bulb_1() {
           value={isLedOn}
         />
       </View>
-    </View> 
+    </View>
   );
 }
 
