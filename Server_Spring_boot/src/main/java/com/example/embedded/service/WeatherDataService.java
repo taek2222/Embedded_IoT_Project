@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -35,12 +38,22 @@ public class WeatherDataService {
     }
 
     public Double getAverageTemperature() {
-        Object[] averages = repository.findAverageTemperatureAndHumidity();
-        return (Double) averages[0];
+        Double avgTemperature = repository.findAverageTemperature();
+        if (avgTemperature != null) {
+            // 소수점 한 자리로 반올림
+            BigDecimal bd = new BigDecimal(avgTemperature).setScale(1, RoundingMode.HALF_UP);
+            return bd.doubleValue();
+        }
+        return null;
     }
 
     public Double getAverageHumidity() {
-        Object[] averages = repository.findAverageTemperatureAndHumidity();
-        return (Double) averages[1];
+        Double avgHumidity = repository.findAverageHumidity();
+        if (avgHumidity != null) {
+            // 소수점 한 자리로 반올림
+            BigDecimal bd = new BigDecimal(avgHumidity).setScale(1, RoundingMode.HALF_UP);
+            return bd.doubleValue();
+        }
+        return null;
     }
 }

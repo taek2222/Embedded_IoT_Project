@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 public interface WeatherDataRepository extends JpaRepository<WeatherData, Long> {
     Page<WeatherData> findAll(Pageable pageable);
 
-    @Query("SELECT AVG(w.temperature) as avgTemperature, AVG(w.humidity) as avgHumidity FROM WeatherData w")
-    Object[] findAverageTemperatureAndHumidity();
+    @Query("SELECT AVG(w.temperature) FROM WeatherData w")
+    Double findAverageTemperature();
+
+    @Query("SELECT AVG(w.humidity) FROM WeatherData w")
+    Double findAverageHumidity();
 }
