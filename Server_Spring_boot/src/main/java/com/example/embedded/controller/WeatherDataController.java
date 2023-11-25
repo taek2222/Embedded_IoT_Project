@@ -33,6 +33,11 @@ public class WeatherDataController {
         return service.getTemperature();
     }
 
+    @GetMapping("/fine_dust")
+    public Integer getFine_dust() {
+        return service.getFine_dust();
+    }
+
     @GetMapping("/average/temperature")
     public Double getAverageTemperature() {
         return service.getAverageTemperature();
@@ -41,5 +46,10 @@ public class WeatherDataController {
     @GetMapping("/average/humidity")
     public Double getAverageHumidity() {
         return service.getAverageHumidity();
+    }
+
+    @GetMapping("/average/fine_dust")
+    public Double getAverageFine_Dust() {
+        return service.getAverageFine_Dust();
     }
 }

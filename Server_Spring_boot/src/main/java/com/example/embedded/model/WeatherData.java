@@ -22,16 +22,20 @@ public class WeatherData {
     @Column(name = "humidity")
     private Integer humidity;
 
+    @Column(name = "fine_dust")
+    private Integer fine_dust;
+
     // 기본 생성자
     public WeatherData() {
     }
 
     // 모든 필드를 포함하는 생성자
-    public WeatherData(Long id, Date recordDate, Integer temperature, Integer humidity) {
+    public WeatherData(Long id, Date recordDate, Integer temperature, Integer humidity, Integer fine_dust) {
         this.id = id;
         this.recordDate = recordDate;
         this.temperature = temperature;
         this.humidity = humidity;
+        this.fine_dust= fine_dust;
     }
 
     // getter 및 setter 메소드
@@ -63,7 +67,13 @@ public class WeatherData {
         return humidity;
     }
 
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
+    public void setHumidity(Integer humidity) { this.humidity = humidity; }
+
+    public Integer getFine_dust() {
+        return fine_dust;
+    }
+
+    public void setFine_dust(Integer fine_dust) {
+        this.fine_dust = fine_dust;
     }
 }

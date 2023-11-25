@@ -25,16 +25,22 @@ public class WeatherDataService {
         return repository.findAll();
     }
 
-    public Integer getHumidity() { // 최신 데이터 중 습도만 반환
+    public Integer getHumidity() { // 최신 데이터 중 습도 반환
         WeatherData latestData = repository.findAll(PageRequest.of(0, 1, Sort.by("recordDate").descending()))
                 .getContent().get(0);
         return latestData != null ? latestData.getHumidity() : null;
     }
 
-    public Integer getTemperature() { // 최신 데이터 중 온도만 반환
+    public Integer getTemperature() { // 최신 데이터 중 온도 반환
         WeatherData latestData = repository.findAll(PageRequest.of(0, 1, Sort.by("recordDate").descending()))
                 .getContent().get(0);
         return latestData != null ? latestData.getTemperature() : null;
+    }
+
+    public Integer getFine_dust() { // 최신 데이터 중 미세 먼지 반환
+        WeatherData latestData = repository.findAll(PageRequest.of(0, 1, Sort.by("recordDate").descending()))
+                .getContent().get(0);
+        return latestData != null ? latestData.getFine_dust() : null;
     }
 
     public Double getAverageTemperature() {
@@ -52,6 +58,16 @@ public class WeatherDataService {
         if (avgHumidity != null) {
             // 소수점 한 자리로 반올림
             BigDecimal bd = new BigDecimal(avgHumidity).setScale(1, RoundingMode.HALF_UP);
+            return bd.doubleValue();
+        }
+        return null;
+    }
+
+    public Double getAverageFine_Dust() {
+        Double avgFine_dust = repository.findAverageFine_dust();
+        if (avgFine_dust != null) {
+            // 소수점 한 자리로 반올림
+            BigDecimal bd = new BigDecimal(avgFine_dust).setScale(1, RoundingMode.HALF_UP);
             return bd.doubleValue();
         }
         return null;

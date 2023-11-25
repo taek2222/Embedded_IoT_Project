@@ -16,4 +16,7 @@ public interface WeatherDataRepository extends JpaRepository<WeatherData, Long> 
 
     @Query("SELECT AVG(w.humidity) FROM WeatherData w")
     Double findAverageHumidity();
+
+    @Query("SELECT AVG(w.fine_dust) FROM WeatherData w")
+    Double findAverageFine_dust();
 }
