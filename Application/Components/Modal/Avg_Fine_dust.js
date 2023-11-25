@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
     // 평균 미세먼지 이미지
     width: 50,
     height: 50,
-    marginLeft: 10,
+    marginLeft: 15,
   },
   Fine_dust_font: {
     // 평균 미세먼지 폰트
-    marginLeft: 5,
+    marginLeft: 8,
     fontSize: 20,
     fontWeight: "bold",
   },

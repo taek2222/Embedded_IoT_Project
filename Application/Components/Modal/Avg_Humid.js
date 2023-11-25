@@ -1,14 +1,25 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
 function Avg_Humid() {
+  const [averageHumidity, setAverageHumidity] = useState(null);
+
+  useEffect(() => {
+    // 서버로부터 평균 온도 데이터를 가져옵니다.
+    fetch('http://localhost:8080/api/weather/average/humidity')
+      .then(response => response.json())
+      .then(data => setAverageHumidity(data))
+      .catch(error => console.error('Error:', error));
+  }, []);
+
   return (
     <View style={styles.Humid_border}>
       <Image
         source={require("../../assets/contents/humidity.png")}
         style={styles.Humid_image}
       />
-      <Text style={styles.Humid_font}> 습도 : </Text>
+      <Text style={styles.Humid_font}> 습  도  :   {averageHumidity} %</Text>
     </View>
   );
 }
@@ -28,11 +39,11 @@ const styles = StyleSheet.create({
     // 평균 습도 이미지
     width: 50,
     height: 60,
-    marginLeft: 10,
+    marginLeft: 27,
   },
   Humid_font: {
     // 평균 습도 폰트
-    marginLeft: 5,
+    marginLeft: 11,
     fontSize: 20,
     fontWeight: "bold",
   },
