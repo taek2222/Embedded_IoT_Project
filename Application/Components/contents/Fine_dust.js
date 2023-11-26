@@ -3,31 +3,24 @@ import { useState, useEffect } from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 
 function Fine_dust() {
+  const [weatherData, setWeatherData] = useState(null);
 
-  const [dustData, setDustData] = useState(null);
-
-    // 미세먼지 데이터를 불러오는 함수
-    const fetchDustData = async () => {
-      try {
-        const response = await fetch('http://192.168.137.34:5000/dust/live', {
-          method: 'POST',
-        });
-        const data = await response.json();
-        setDustData(data.pm10_0);
-        console.log('서버로 전달 받은 미세먼지 데이터 : ', data.pm10_0);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+  useEffect(() => {
+    const fetchWeatherData = () => {
+      fetch('http://localhost:8080/api/weather/fine_dust')
+          .then(response => response.json())
+          .then(data => {
+            setWeatherData(data);
+            console.log("새로운 데이터 미세먼지", data);
+            setTimeout(fetchWeatherData, 3000); // 3초 마다 예약
+          })
     };
-  
-    // 컴포넌트 마운트 시 및 5초마다 미세먼지 데이터 갱신
-    useEffect(() => {
-      fetchDustData(); // 처음 마운트될 때 데이터 불러오기
-      const interval = setInterval(fetchDustData, 5000); // 5초마다 반복
-  
-      // 컴포넌트 언마운트 시 인터벌 정리
-      return () => clearInterval(interval);
-    }, []);
+
+    fetchWeatherData();
+  return () => clearTimeout(fetchWeatherData); // 컴포넌트 해제 시 타임아웃 정리
+}, []);
+
+const isDataLoaded = weatherData && weatherData != null && weatherData != null;
 
   return (
     <View>
@@ -37,7 +30,10 @@ function Fine_dust() {
           source={require('../../assets/contents/fine_dust.png')}
           style={styles.fine_dust}
         />
-        <Text style={styles.fine_dust_value}>{dustData}</Text>
+        {isDataLoaded ? (<Text style={styles.fine_dust_value}>{weatherData}</Text>
+        ) : (
+          <Text>X</Text>
+        )}
         <Text style={styles.fine_dust_value_unit}>㎛</Text>
       </View>
     </View>
