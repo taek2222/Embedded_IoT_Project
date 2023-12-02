@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 function Hot_cold_fan() {
   const [selected, setSelected] = useState('중');
+  const [isOn, setIsOn] = useState(false);
 
   const Checkbox = ({ label, value }) => (
     <TouchableOpacity
@@ -27,6 +28,18 @@ function Hot_cold_fan() {
             <Checkbox label="상" value="상" />
             <Checkbox label="중" value="중" />
             <Checkbox label="하" value="하" />
+          </View>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => setIsOn(true)}>
+              <Text style={styles.buttonText}>ON</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => setIsOn(false)}>
+              <Text style={styles.buttonText}>OFF</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -90,6 +103,22 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: '#000',
     backgroundColor: '#000',
+  },
+  buttonsContainer: {
+    width: 130,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 10,
+  },
+  button: {
+    borderWidth: 2,
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: 'bold',
   },
 });
 
