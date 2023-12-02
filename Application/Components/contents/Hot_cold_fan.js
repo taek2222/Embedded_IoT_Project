@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   hc_fan_font: {
-    marginTop: 7,
-    marginLeft: 50,
+    marginTop: 10,
+    marginLeft: 142,
     fontSize: 17,
     fontWeight: "bold",
   },

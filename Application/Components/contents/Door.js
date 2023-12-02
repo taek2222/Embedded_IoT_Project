@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   door_font: {
     marginTop: 7,
-    marginLeft: 50,
+    marginLeft: 76,
     fontSize: 17,
     fontWeight: "bold",
   },
