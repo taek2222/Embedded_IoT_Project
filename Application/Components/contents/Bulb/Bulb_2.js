@@ -7,11 +7,16 @@ function Bulb_1() {
 
   const handleToggle = async () => {
     const action = isLedOn ? "off" : "on";
-  
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1000); 
+
     try {
       const response = await fetch(`http://192.168.137.34:5000/led/27/${action}`, {
         method: "POST",
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId); 
+
       const data = await response.json();
 
       if (data === 200 || data === 100) {
@@ -20,7 +25,8 @@ function Bulb_1() {
         console.error("Unexpected status code:", data);
       }
     } catch (error) {
-      Alert.alert("Error", "Cannot communicate with the server");
+      clearTimeout(timeoutId);
+      Alert.alert("🚫 Error 🚫", "인터넷 연결 상태를 확인해주세요. [2. 전구]");
     }
   };
 

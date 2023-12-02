@@ -26,7 +26,7 @@ function Bulb_1() {
       }
     } catch (error) {
       clearTimeout(timeoutId);
-      Alert.alert("🚫 Error 🚫", "인터넷 연결 상태를 확인해주세요.");
+      Alert.alert("🚫 Error 🚫", "인터넷 연결 상태를 확인해주세요. [1. 전구]");
     }
   };
 
