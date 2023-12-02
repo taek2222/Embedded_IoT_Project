@@ -32,7 +32,7 @@ const isDataLoaded = weatherData && weatherData != null && weatherData != null;
         />
         {isDataLoaded ? (<Text style={styles.temperature_value}>{weatherData}</Text>
         ) : (
-          <Text>X</Text>
+          <Text style={styles.temperature_value}>X</Text>
         )}
         <Text style={styles.temperature_value_unit}>°C</Text>
       </View>

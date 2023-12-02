@@ -32,7 +32,7 @@ const isDataLoaded = weatherData && weatherData != null && weatherData != null;
         />
         {isDataLoaded ? (<Text style={styles.humidity_value}>{weatherData}</Text>
         ) : (
-          <Text>X</Text>
+          <Text style={styles.humidity_value}>X</Text>
         )}
         
         <Text style={styles.humidity_value_unit}>%</Text>

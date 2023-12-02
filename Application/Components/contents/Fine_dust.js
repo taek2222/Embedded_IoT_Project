@@ -32,7 +32,7 @@ const isDataLoaded = weatherData && weatherData != null && weatherData != null;
         />
         {isDataLoaded ? (<Text style={styles.fine_dust_value}>{weatherData}</Text>
         ) : (
-          <Text>X</Text>
+          <Text style={styles.fine_dust_value}>X</Text>
         )}
         <Text style={styles.fine_dust_value_unit}>㎛</Text>
       </View>
