@@ -47,7 +47,6 @@ function Hot_cold_fan() {
   );
 }
 
-
 const styles = StyleSheet.create({
   hc_fan_border: {
     // 냉온풍기 박스
