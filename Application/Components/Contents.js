@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import * as Permissions from 'expo-permissions';
 
 import Bulb from "./contents/Bulb.js";
 import Temperature_Fine_dust from "./Temperature_Fine_dust.js";
@@ -15,16 +14,6 @@ const DATA = [
 ];
 
 function Contents() {
-  useEffect(() => {
-    checkPermissions();
-  }, []);
-
-  const checkPermissions = async () => {
-    const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    if (status !== 'granted') {
-      await Permissions.askAsync(Permissions.NOTIFICATIONS);
-    }
-  };
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
