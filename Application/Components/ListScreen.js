@@ -1,20 +1,24 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View, StyleSheet } from "react-native";
 
 import Header from "./header.js";
+import List_Contents from "./List_Contents.js";
 
 function ListScreen() {
-    return (
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "white",
-          }}
-        >
-          <Header />
-        </View>
-      );
+  return (
+    <View style={style.Screen}>
+      <Header />
+      <List_Contents />
+    </View>
+  );
 }
+
+const style = StyleSheet.create({
+  Screen: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+  },
+});
 
 export default ListScreen;
