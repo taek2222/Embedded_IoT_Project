@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   line: {
     height: "70%", // 선의 높이
     marginVertical: 30,
-    marginLeft: 17,
+    marginLeft: 14,
     width: 4, // 선의 너비
     backgroundColor: "gray", // 선의 색
     borderRadius: 100,

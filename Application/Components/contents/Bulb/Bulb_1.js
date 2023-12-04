@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   light: {
-    // LED 전등 사진
     width: 70,
     height: 70,
     marginLeft: 20,
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   light_font: {
-    // LED 상태 글씨
+    width: 80,
     marginLeft: 14,
     marginTop: 5,
     fontWeight: "bold",

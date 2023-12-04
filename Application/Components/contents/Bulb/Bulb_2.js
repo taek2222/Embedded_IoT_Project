@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   },
   light_font: {
     // LED 상태 글씨
+    width: 83,
     marginLeft: 14,
     marginTop: 5,
     fontWeight: "bold",
