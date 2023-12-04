@@ -26,6 +26,7 @@ function Contents() {
       data={DATA}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
+      contentContainerStyle={{ paddingBottom: 80 }} 
     />
   );
 };
