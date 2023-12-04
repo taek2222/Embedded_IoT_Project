@@ -1,12 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, Switch, Alert } from "react-native";
 
-function Bulb_1() {
-  const [isLedOn, setIsLedOn] = useState(false);
+function Bulb_3({ isLedOn }) {
+  const [ledState, setLedState] = useState(isLedOn);
+
+  useEffect(() => {
+    setLedState(isLedOn);
+  }, [isLedOn]);
 
   const handleToggle = async () => {
-    const action = isLedOn ? "off" : "on";
+    const action = ledState ? "off" : "on";
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 1000); 
 
@@ -20,7 +24,7 @@ function Bulb_1() {
       const data = await response.json();
 
       if (data === 200 || data === 100) {
-        setIsLedOn(!isLedOn); // LED 상태 토글
+        setLedState(!ledState); // LED 상태 토글
       } else {
         console.error("Unexpected status code:", data);
       }
@@ -34,18 +38,18 @@ function Bulb_1() {
     <View style={styles.light_box}>
       <Image
         source={{
-          uri: isLedOn
+          uri: ledState
             ? "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png"
             : "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png",
         }}
         style={styles.light}
       />
       <View style={styles.control}>
-        <Text style={styles.light_font}>3 전구 : {isLedOn ? "ON" : "OFF"}</Text>
+        <Text style={styles.light_font}>3 전구 : {ledState ? "ON" : "OFF"}</Text>
         <Switch
           style={styles.toggle}
           onValueChange={handleToggle}
-          value={isLedOn}
+          value={ledState}
         />
       </View>
     </View> 
@@ -82,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Bulb_1;
+export default Bulb_3;
