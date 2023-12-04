@@ -13,7 +13,7 @@ const DATA = [
   { id: "4", Component: Hot_cold_fan },
 ];
 
-function Contents() {
+function Main_Contents() {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Contents;
+export default Main_Contents;
