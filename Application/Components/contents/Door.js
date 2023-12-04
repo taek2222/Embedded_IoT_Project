@@ -11,6 +11,31 @@ function Door() {
     };
   };
 
+  const sendMotorControl = (action) => {
+    fetch('http://192.168.137.34:5000/control_motor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ action }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      const actionResult = data.motor_action === "open" ? "열림" : "닫힘";
+      const doorRealStatus = data.door_status === "open" ? "열림" : "닫힘";
+      if (actionResult === doorRealStatus) {
+        setDoorStatus(doorRealStatus);
+      } else {
+        // 모터의 동작과 실제 문의 상태가 일치하지 않는 경우
+        alert("문의 상태와 모터의 동작이 일치하지 않습니다!");
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
   return (
     <View>
       <Text style={styles.door_font}>문</Text>
@@ -22,13 +47,13 @@ function Door() {
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => setDoorStatus("열림")}
+            onPress={() => sendMotorControl("open")}
           >
             <Text style={styles.buttonText}>열기</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => setDoorStatus("닫힘")}
+            onPress={() => sendMotorControl("close")}
           >
             <Text style={styles.buttonText}>닫기</Text>
           </TouchableOpacity>
@@ -41,7 +66,6 @@ function Door() {
 
 const styles = StyleSheet.create({
   door_border: {
-    // 문 박스
     width: 160,
     height: 150,
     marginTop: 5,
@@ -52,7 +76,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   door: {
-    // 문 사진
     width: 50,
     height: 60,
     marginTop: 5,

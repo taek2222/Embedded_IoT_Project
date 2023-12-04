@@ -17,7 +17,7 @@ function Bulb() {
         setIsAllOn(true);
       }
     } catch (error) {
-      console.error("Error turning all LEDs on:", error);
+      console.error("Error LEDs on:", error);
     }
   };
 
@@ -30,7 +30,7 @@ function Bulb() {
         setIsAllOn(false);
       }
     } catch (error) {
-      console.error("Error turning all LEDs off:", error);
+      console.error("Error LEDs off:", error);
     }
   };
 
