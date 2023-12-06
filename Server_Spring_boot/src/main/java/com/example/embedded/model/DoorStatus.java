@@ -14,9 +14,20 @@ public class DoorStatus {
     @Column(nullable = false)
     private String status;
 
-    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
     private Date timestamp;
 
-    // getters and setters
+    // Getter 메소드 추가
+    public Long getId() {
+        return id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
 }
