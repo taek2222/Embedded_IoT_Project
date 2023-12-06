@@ -7,7 +7,7 @@ function Temperature() {
 
   useEffect(() => {
     const fetchWeatherData = () => {
-      fetch('http://localhost:8080/api/weather/temperature')
+      fetch('http://172.20.10.2:8080/api/weather/temperature')
           .then(response => response.json())
           .then(data => {
             setWeatherData(data);

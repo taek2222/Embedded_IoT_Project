@@ -7,7 +7,7 @@ function Fine_dust() {
 
   useEffect(() => {
     const fetchWeatherData = () => {
-      fetch('http://localhost:8080/api/weather/fine_dust')
+      fetch('http://172.20.10.2:8080/api/weather/fine_dust')
           .then(response => response.json())
           .then(data => {
             setWeatherData(data);

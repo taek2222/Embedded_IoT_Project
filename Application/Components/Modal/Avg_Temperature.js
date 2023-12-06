@@ -7,7 +7,7 @@ function Avg_Temperature() {
 
   useEffect(() => {
     // 서버로부터 평균 온도 데이터를 가져옵니다.
-    fetch('http://localhost:8080/api/weather/average/temperature')
+    fetch('http://172.20.10.2:8080/api/weather/average/temperature')
       .then(response => response.json())
       .then(data => setAverageTemperature(data))
       .catch(error => console.error('Error:', error));

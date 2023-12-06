@@ -7,7 +7,7 @@ function Avg_Humid() {
 
   useEffect(() => {
     // 서버로부터 평균 온도 데이터를 가져옵니다.
-    fetch('http://localhost:8080/api/weather/average/humidity')
+    fetch('http://172.20.10.2:8080/api/weather/average/humidity')
       .then(response => response.json())
       .then(data => setAverageHumidity(data))
       .catch(error => console.error('Error:', error));
