@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import HomeScreen from "./Components/HomeScreen.js";
-import CameraScreen from "./Components/Camera.js";
+import CameraScreen from "./Components/Camera_Contents.js";
 import ListScreen from "./Components/ListScreen.js";
 
 const Tab = createBottomTabNavigator();
