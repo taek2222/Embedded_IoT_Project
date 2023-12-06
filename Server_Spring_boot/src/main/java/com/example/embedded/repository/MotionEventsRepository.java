@@ -1,19 +1,10 @@
-import jakarta.persistence.*;
-import java.util.Date;
+package com.example.embedded.repository;
 
-@Entity
-@Table(name = "MotionEvents")
-public class MotionEvents {
+import com.example.embedded.model.MotionEvents;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "DetectionTime")
-    private Date detectionTime;
-
-    @Column(name = "SerialNumber")
-    private Integer serialNumber;
-
-    // Getter와 Setter ...
+@Repository
+public interface MotionEventsRepository extends JpaRepository<MotionEvents, Long> {
+    // 커스텀 쿼리 메소드가 필요하다면 여기에 추가
 }
