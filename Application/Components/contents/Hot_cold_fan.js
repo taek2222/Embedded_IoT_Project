@@ -5,6 +5,28 @@ function Hot_cold_fan() {
   const [selected, setSelected] = useState('중');
   const [isOn, setIsOn] = useState(false);
 
+  // 서버와 통신하는 함수
+  const controlFan = async (powerState) => {
+    const speedMap = { "상": "HIGH", "중": "MEDIUM", "하": "LOW" };
+    const speed = speedMap[selected];
+    const is_on = powerState;
+
+    try {
+      const response = await fetch('http://192.168.137.76:7000/fan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ speed, is_on }),
+      });
+
+      const jsonResponse = await response.json();
+      console.log('Server Response:', jsonResponse);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   const Checkbox = ({ label, value }) => (
     <TouchableOpacity
       style={styles.checkboxItem}
@@ -30,17 +52,23 @@ function Hot_cold_fan() {
             <Checkbox label="하" value="하" />
           </View>
           <View style={styles.buttonsContainer}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => setIsOn(true)}>
-              <Text style={styles.buttonText}>ON</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => setIsOn(false)}>
-              <Text style={styles.buttonText}>OFF</Text>
-            </TouchableOpacity>
-          </View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            setIsOn(true);
+            controlFan(true);
+          }}>
+          <Text style={styles.buttonText}>ON</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            setIsOn(false);
+            controlFan(false);
+          }}>
+          <Text style={styles.buttonText}>OFF</Text>
+        </TouchableOpacity>
+      </View>
         </View>
       </View>
     </View>
