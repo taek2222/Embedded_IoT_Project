@@ -7,10 +7,16 @@ function List_Contents() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://172.20.10.2:8080/api/doorstatus");
+        const response = await fetch(
+          "http://172.20.10.2:8080/api/doorstatus"
+        );
         const json = await response.json();
-        setData(json);
+        const sortedData = json.sort(
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+        );
+        setData(sortedData);
       } catch (error) {
+        // 에러 처리
       }
     };
 
@@ -28,33 +34,30 @@ function List_Contents() {
     let hours = date.getHours();
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-  
+    const ampm = hours >= 12 ? "PM" : "AM";
+
     hours = hours % 12;
     hours = hours ? hours : 12; // 0시는 12로 표시
-    const minutesPadded = minutes < 10 ? '0' + minutes : minutes;
-    const secondsPadded = seconds < 10 ? '0' + seconds : seconds;
-  
+    const minutesPadded = minutes < 10 ? "0" + minutes : minutes;
+    const secondsPadded = seconds < 10 ? "0" + seconds : seconds;
+
     return `${year} / ${month} / ${day} - ${hours}:${minutesPadded}:${secondsPadded} ${ampm}`;
   };
-  
+
   const renderItem = ({ item }) => {
     const displayStatus = item.status === "closed" ? "닫힘" : "열림";
     const statusColor = item.status === "closed" ? "red" : "green";
-  
+
     return (
       <View style={styles.item}>
         <Text style={[styles.title, { color: statusColor }]}>
           ✔️ {displayStatus}
         </Text>
-        <Text style={styles.timestamp}>
-          {formatDate(item.timestamp)}
-        </Text>
+        <Text style={styles.timestamp}>{formatDate(item.timestamp)}</Text>
       </View>
     );
   };
-  
-  
+
   return (
     <View style={styles.List_Contents}>
       <Image
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     marginHorizontal: 10,
     borderBottomWidth: 2, // 선의 두께
-    borderBottomColor: 'gray', // 선의 색상 (회색)
+    borderBottomColor: "gray", // 선의 색상 (회색)
   },
   title: {
     marginLeft: -5,
