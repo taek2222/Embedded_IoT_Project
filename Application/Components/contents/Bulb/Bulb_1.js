@@ -12,14 +12,17 @@ function Bulb_1({ isLedOn }) {
   const handleToggle = async () => {
     const action = ledState ? "off" : "on";
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 1000); 
+    const timeoutId = setTimeout(() => controller.abort(), 1000);
 
     try {
-      const response = await fetch(`http://192.168.137.34:5000/led/17/${action}`, {
-        method: "POST",
-        signal: controller.signal,
-      });
-      clearTimeout(timeoutId); 
+      const response = await fetch(
+        `http://192.168.137.76:5000/led/17/${action}`,
+        {
+          method: "POST",
+          signal: controller.signal,
+        }
+      );
+      clearTimeout(timeoutId);
 
       const data = await response.json();
 
@@ -37,15 +40,17 @@ function Bulb_1({ isLedOn }) {
   return (
     <View style={styles.light_box}>
       <Image
-        source={{
-          uri: ledState
-            ? "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png"
-            : "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png",
-        }}
+        source={
+          ledState
+            ? require("../../../assets/contents/light_on.png")
+            : require("../../../assets/contents/light_off.png")
+        }
         style={styles.light}
       />
       <View style={styles.control}>
-        <Text style={styles.light_font}>1 전구 : {ledState ? "ON" : "OFF"}</Text>
+        <Text style={styles.light_font}>
+          1 전구 : {ledState ? "ON" : "OFF"}
+        </Text>
         <Switch
           style={styles.toggle}
           onValueChange={handleToggle}

@@ -15,7 +15,7 @@ function Bulb_3({ isLedOn }) {
     const timeoutId = setTimeout(() => controller.abort(), 1000); 
 
     try {
-      const response = await fetch(`http://192.168.137.34:5000/led/23/${action}`, {
+      const response = await fetch(`http://192.168.137.76:5000/led/23/${action}`, {
         method: "POST",
         signal: controller.signal,
       });
@@ -37,11 +37,11 @@ function Bulb_3({ isLedOn }) {
   return (
     <View style={styles.light_box}>
       <Image
-        source={{
-          uri: ledState
-            ? "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_on.png"
-            : "/Users/ohyeontaek/Embedded_IoT_Project/Application/assets/contents/light_off.png",
-        }}
+        source={
+          ledState
+            ? require("../../../assets/contents/light_on.png")
+            : require("../../../assets/contents/light_off.png")
+        }
         style={styles.light}
       />
       <View style={styles.control}>
