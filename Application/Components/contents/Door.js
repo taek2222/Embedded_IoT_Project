@@ -12,7 +12,7 @@ function Door() {
   };
 
   const sendMotorControl = (action) => {
-    fetch('http://192.168.137.34:6000/control_motor', {
+    fetch('http://192.168.137.76:6000/control_motor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
