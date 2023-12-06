@@ -10,7 +10,7 @@ function Bulb() {
 
   const handleAllOn = async () => {
     try {
-      const response = await fetch("http://192.168.137.76:5000/led/all/on", {
+      const response = await fetch("http://172.20.10.3:5000/led/all/on", {
         method: "POST",
       });
       if (response.ok) {
@@ -23,7 +23,7 @@ function Bulb() {
 
   const handleAllOff = async () => {
     try {
-      const response = await fetch("http://192.168.137.76:5000/led/all/off", {
+      const response = await fetch("http://172.20.10.3:5000/led/all/off", {
         method: "POST",
       });
       if (response.ok) {

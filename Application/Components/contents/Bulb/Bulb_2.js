@@ -15,7 +15,7 @@ function Bulb_2({ isLedOn }) {
     const timeoutId = setTimeout(() => controller.abort(), 1000); 
 
     try {
-      const response = await fetch(`http://192.168.137.76:5000/led/27/${action}`, {
+      const response = await fetch(`http://172.20.10.3:5000/led/27/${action}`, {
         method: "POST",
         signal: controller.signal,
       });

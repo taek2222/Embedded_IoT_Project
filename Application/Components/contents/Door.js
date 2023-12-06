@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from "react-native";
 
 function Door() {
   const [doorStatus, setDoorStatus] = useState("닫힘"); // 문의 상태를 나타내는 상태 변수
@@ -12,7 +12,7 @@ function Door() {
   };
 
   const sendMotorControl = (action) => {
-    fetch('http://192.168.137.76:6000/control_motor', {
+    fetch('http://172.20.10.3:6000/control_motor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ function Door() {
         setDoorStatus(doorRealStatus);
       } else {
         // 모터의 동작과 실제 문의 상태가 일치하지 않는 경우
-        alert("문의 상태와 모터의 동작이 일치하지 않습니다!");
+        Alert.alert("🚫 문상태 점검 🚫", " 통신 및 자동문 상태를 확인해주세요. ");
       }
     })
     .catch((error) => {

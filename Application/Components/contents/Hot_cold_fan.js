@@ -12,7 +12,7 @@ function Hot_cold_fan() {
     const is_on = powerState;
 
     try {
-      const response = await fetch('http://192.168.137.76:7000/fan', {
+      const response = await fetch('http://172.20.10.3:7000/fan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -16,7 +16,7 @@ function Bulb_1({ isLedOn }) {
 
     try {
       const response = await fetch(
-        `http://192.168.137.76:5000/led/17/${action}`,
+        `http://172.20.10.3:5000/led/17/${action}`,
         {
           method: "POST",
           signal: controller.signal,
