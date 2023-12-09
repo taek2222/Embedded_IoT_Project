@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/motionevents")
+@RestController  // RESTful 서비스 컨트롤러
+@RequestMapping("/api/motionevents") // 침입자 감지 리스트 데이터 요청 URL
 public class MotionEventsController {
 
-    @Autowired
+    @Autowired // Spring 의존성 주입 기능 사용
     private MotionEventsService service;
 
-    @GetMapping
+    @GetMapping // GET 요청을 이 메서드에 매핑
     public List<MotionEvents> getAllMotionEvents() {
         return service.getAllMotionEvents();
     }

@@ -43,7 +43,7 @@ public class WeatherDataService {
         return latestData != null ? latestData.getFine_dust() : null;
     }
 
-    public Double getAverageTemperature() {
+    public Double getAverageTemperature() { // 평균 온도 값 반환
         Double avgTemperature = repository.findAverageTemperature();
         if (avgTemperature != null) {
             // 소수점 한 자리로 반올림
@@ -53,7 +53,7 @@ public class WeatherDataService {
         return null;
     }
 
-    public Double getAverageHumidity() {
+    public Double getAverageHumidity() { // 평균 습도 값 반환
         Double avgHumidity = repository.findAverageHumidity();
         if (avgHumidity != null) {
             // 소수점 한 자리로 반올림
@@ -63,7 +63,7 @@ public class WeatherDataService {
         return null;
     }
 
-    public Double getAverageFine_Dust() {
+    public Double getAverageFine_Dust() { // 평균 미세먼지 값 반환
         Double avgFine_dust = repository.findAverageFine_dust();
         if (avgFine_dust != null) {
             // 소수점 한 자리로 반올림

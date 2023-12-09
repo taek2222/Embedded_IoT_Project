@@ -4,25 +4,25 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "weather_data")
+@Entity // JPA 엔터티 선언
+@Table(name = "weather_data") // 매핑될 데이터베이스 테이블 이름 지정
 public class WeatherData {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // 해당 필드가 엔터티의 기본키
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 생성 전략
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "record_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP) // Data 타입을 데이베이스의 타임스탬프 타입과 매핑
+    @Column(name = "record_date", nullable = false) // 데이터베이스 칼럼 [NULL 값 허용 X]
     private Date recordDate;
 
-    @Column(name = "temperature")
+    @Column(name = "temperature") // 데이터베이스 칼럼
     private Integer temperature;
 
-    @Column(name = "humidity")
+    @Column(name = "humidity") // 데이터베이스 칼럼
     private Integer humidity;
 
-    @Column(name = "fine_dust")
+    @Column(name = "fine_dust") // 데이터베이스 칼럼
     private Integer fine_dust;
 
     // 기본 생성자

@@ -4,7 +4,6 @@ import com.example.embedded.model.MotionEvents;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository // 데이터 레포지토리
 public interface MotionEventsRepository extends JpaRepository<MotionEvents, Long> {
-    // 커스텀 쿼리 메소드가 필요하다면 여기에 추가
 }
