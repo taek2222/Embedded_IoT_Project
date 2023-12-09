@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+} from "react-native";
 import { WebView } from "react-native-webview";
 import Header from "./header.js";
 
 function CameraScreen() {
   const [motionEvents, setMotionEvents] = useState([]);
+  const webviewRef = useRef(); // WebView 참조를 위한 ref
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +33,19 @@ function CameraScreen() {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  const takeScreenshot = () => {
+    fetch("http://172.20.10.4:8282/screenshot")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        Alert.alert("📸 스크린샷 촬영 성공 📸", "스크린샷이 성공적으로 촬영되었습니다.");
+      })
+      .catch(error => {
+        console.error("스크린샷 요청 오류", error);
+        Alert.alert("오류 발생", "스크린샷 촬영에 실패했습니다.");
+      });
+  };
 
   const renderItem = ({ item }) => {
     // 날짜 형식 변경
@@ -50,7 +72,7 @@ function CameraScreen() {
   return (
     <View style={style.Screen}>
       <Header />
-      <View style={{ height: 250 }}>
+      <View style={{ height: 250 }} ref={webviewRef}>
         <WebView
           source={{ uri: "http://172.20.10.4:8282/video_feed" }}
           style={style.WebViewStyle}
@@ -67,10 +89,12 @@ function CameraScreen() {
           keyExtractor={(item) => item.id.toString()}
         />
       </View>
-      <Image
-        source={require("../assets/contents/screenshot.png")}
-        style={style.screenshot}
-      />
+      <TouchableOpacity onPress={takeScreenshot}>
+        <Image
+          source={require("../assets/contents/screenshot.png")}
+          style={style.screenshot}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -113,7 +137,7 @@ const style = StyleSheet.create({
   screenshot: {
     width: 100,
     height: 80,
-    marginBottom: 30
+    marginBottom: 30,
   },
 });
 
