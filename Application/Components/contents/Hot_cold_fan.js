@@ -38,7 +38,7 @@ function Hot_cold_fan() {
 
   return (
     <View>
-      <Text style={styles.hc_fan_font}>냉온풍기</Text>
+      <Text style={styles.hc_fan_font}>선풍기</Text>
       <View style={styles.hc_fan_border}>
         <Image
           source={require("../../assets/contents/fan.png")}
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   hc_fan_font: {
     marginTop: 10,
-    marginLeft: 142,
+    marginLeft: 148,
     fontSize: 17,
     fontWeight: "bold",
   },
