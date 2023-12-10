@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-function Modal_Title() {
+function Modal_Title() { // 모달 상단 헤더 부분 스타일
   return (
     <View style = {styles.modal_title}>
       <Image
@@ -13,13 +13,13 @@ function Modal_Title() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   modal_title: {
     flexDirection: "row",
     alignItems:"center"
   },
   modal_image: {
-    // 문 사진
     width: 40,
     height: 40,
   },

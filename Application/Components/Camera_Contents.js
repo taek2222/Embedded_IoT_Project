@@ -12,10 +12,12 @@ import { WebView } from "react-native-webview";
 import Header from "./header.js";
 
 function CameraScreen() {
+  // 카메라 내비게이션 화면 부분
   const [motionEvents, setMotionEvents] = useState([]);
   const webviewRef = useRef(); // WebView 참조를 위한 ref
 
   useEffect(() => {
+    // 침입자 감지 리스트 데이터 요청
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -23,9 +25,7 @@ function CameraScreen() {
         );
         const json = await response.json();
         setMotionEvents(json);
-      } catch (error) {
-        // 에러 처리
-      }
+      } catch (error) {}
     };
 
     fetchData();
@@ -35,13 +35,17 @@ function CameraScreen() {
   }, []);
 
   const takeScreenshot = () => {
+    // 스크린샷 서버 통신 요청
     fetch("http://172.20.10.4:8282/screenshot")
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
-        Alert.alert("📸 스크린샷 촬영 성공 📸", "스크린샷이 성공적으로 촬영되었습니다.");
+        Alert.alert(
+          "📸 스크린샷 촬영 성공 📸",
+          "스크린샷이 성공적으로 촬영되었습니다."
+        );
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("스크린샷 요청 오류", error);
         Alert.alert("오류 발생", "스크린샷 촬영에 실패했습니다.");
       });
@@ -99,6 +103,7 @@ function CameraScreen() {
   );
 }
 
+// 스타일 정의
 const style = StyleSheet.create({
   camera_main: {
     width: 210,

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-function Temperature() {
+function Temperature() { // 온도 데이터 표시 및 통신
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function Temperature() {
           .then(response => response.json())
           .then(data => {
             setWeatherData(data);
-            console.log("새로운 데이터 온도", data);
+            console.log("[데이터] 온도", data);
             setTimeout(fetchWeatherData, 3000); // 3초 마다 예약
           })
     };
@@ -40,9 +40,9 @@ const isDataLoaded = weatherData && weatherData != null && weatherData != null;
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   temperature_border: {
-    // 온도 박스
     width: 160,
     height: 150,
     marginTop: 5,
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   temperature: {
-    // 온도계 사진
     width: 70,
     height: 80,
     marginLeft: 5,

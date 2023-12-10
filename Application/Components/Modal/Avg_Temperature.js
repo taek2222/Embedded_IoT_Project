@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-function Avg_Temperature() {
+function Avg_Temperature() { // 평균 값 데이터 표시
   const [averageTemperature, setAverageTemperature] = useState(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function Avg_Temperature() {
       .catch(error => console.error('Error:', error));
   }, []);
 
-  return (
+  return ( // 표시 데이터 화면
     <View style={styles.Temperature_border}>
       <Image
         source={require("../../assets/contents/temperature.png")}
@@ -24,9 +24,9 @@ function Avg_Temperature() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   Temperature_border: {
-    // 평균 온도 박스
     width: 280,
     height: 80,
     marginTop: 15,
@@ -36,13 +36,11 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   Temperature_image: {
-    // 평균 온도 이미지
     width: 50,
     height: 60,
     marginLeft: 25,
   },
   Temperature_font: {
-    // 평균 온도 폰트
     marginLeft: 10,
     fontSize: 20,
     fontWeight: "bold",

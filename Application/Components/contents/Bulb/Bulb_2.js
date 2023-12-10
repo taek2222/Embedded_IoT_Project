@@ -3,26 +3,31 @@ import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, Switch, Alert } from "react-native";
 
 function Bulb_2({ isLedOn }) {
+  // 두 번째 LED
   const [ledState, setLedState] = useState(isLedOn);
 
+  // LED 상태 변경 관련 useEffect
   useEffect(() => {
     setLedState(isLedOn);
   }, [isLedOn]);
 
+  // LED 상태 관련 선언
   const handleToggle = async () => {
     const action = ledState ? "off" : "on";
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 1000); 
+    const timeoutId = setTimeout(() => controller.abort(), 1000);
 
+    // 서버 통신
     try {
       const response = await fetch(`http://172.20.10.3:5000/led/27/${action}`, {
         method: "POST",
         signal: controller.signal,
       });
-      clearTimeout(timeoutId); 
+      clearTimeout(timeoutId);
 
       const data = await response.json();
 
+      // 200의 반환 값 ON & 100의 반환 값 OFF 성공
       if (data === 200 || data === 100) {
         setLedState(!ledState); // LED 상태 토글
       } else {
@@ -34,7 +39,7 @@ function Bulb_2({ isLedOn }) {
     }
   };
 
-  return (
+  return ( // 전구 2 화면 표시
     <View style={styles.light_box}>
       <Image
         source={
@@ -45,23 +50,25 @@ function Bulb_2({ isLedOn }) {
         style={styles.light}
       />
       <View style={styles.control}>
-        <Text style={styles.light_font}>2 전구 : {ledState ? "ON" : "OFF"}</Text>
+        <Text style={styles.light_font}>
+          2 전구 : {ledState ? "ON" : "OFF"}
+        </Text>
         <Switch
           style={styles.toggle}
           onValueChange={handleToggle}
           value={ledState}
         />
       </View>
-    </View> 
+    </View>
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   light_box: {
     flexDirection: "column",
   },
   light: {
-    // LED 전등 사진
     width: 70,
     height: 70,
     marginLeft: 20,
@@ -72,7 +79,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   light_font: {
-    // LED 상태 글씨
     width: 83,
     marginLeft: 14,
     marginTop: 5,
@@ -86,9 +92,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   line: {
-    height: '100%', // 선의 높이
-    width: 1, // 선의 너비
-    backgroundColor: 'black', // 선의 색
+    height: "100%",
+    width: 1,
+    backgroundColor: "black",
   },
 });
 

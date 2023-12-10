@@ -11,8 +11,8 @@ import Avg_Temperature from "./Modal/Avg_Temperature.js";
 import Avg_Fine_dust from "./Modal/Avg_Fine_dust.js";
 import Avg_Humid from "./Modal/Avg_Humid.js";
 
-const Modal_ = ({ modalVisible, setModalVisible }) => {
-  return (
+const Modal_ = ({ modalVisible, setModalVisible }) => { // 리포트 버튼 누를시 나오는 모달 화면
+  return ( // 모달 화면에 표시할 부분 생성
     <Modal
       animationType="slide"
       transparent={true}
@@ -37,6 +37,7 @@ const Modal_ = ({ modalVisible, setModalVisible }) => {
   );
 };
 
+// 스타일 정의
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,

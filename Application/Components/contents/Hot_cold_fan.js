@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-function Hot_cold_fan() {
-  const [selected, setSelected] = useState('중');
+function Hot_cold_fan() { // 선풍기 화면 표시 및 제어
+  const [selected, setSelected] = useState('중'); // 초기 설정 값 중
   const [isOn, setIsOn] = useState(false);
 
   // 서버와 통신하는 함수
@@ -11,7 +11,7 @@ function Hot_cold_fan() {
     const speed = speedMap[selected];
     const is_on = powerState;
 
-    try {
+    try { // 선풍기 모터 서버 통신
       const response = await fetch('http://172.20.10.3:7000/fan', {
         method: 'POST',
         headers: {
@@ -75,9 +75,9 @@ function Hot_cold_fan() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   hc_fan_border: {
-    // 냉온풍기 박스
     width: 340,
     height: 150,
     marginTop: 5,
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   hc_fan: {
-    // 냉온풍기 사진
     width: 110,
     height: 110,
     marginLeft: 25,

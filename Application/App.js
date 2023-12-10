@@ -3,15 +3,16 @@ import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import HomeScreen from "./Components/HomeScreen.js";
-import CameraScreen from "./Components/Camera_Contents.js";
-import ListScreen from "./Components/ListScreen.js";
+import HomeScreen from "./Components/HomeScreen.js"; // 메인 화면
+import CameraScreen from "./Components/Camera_Contents.js"; // 카메라 화면
+import ListScreen from "./Components/ListScreen.js"; // 출입 관련 리스트 화면
 
 const Tab = createBottomTabNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
+    // 메인, 카메라, 출입 관련 아래 내비게이션 설정
+    <NavigationContainer> 
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
           name="메인 화면"

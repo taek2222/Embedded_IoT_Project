@@ -17,26 +17,26 @@ function header() {
   const startRotation = () => {
     rotateAnim.setValue(0);
 
-    // 애니메이션 실행
+    // 애니메이션
     Animated.timing(rotateAnim, {
-      toValue: 1, // 최종 값 1
-      duration: 1000, // 1초 동안
-      useNativeDriver: true, // 네이티브 드라이버 사용
+      toValue: 1, 
+      duration: 1000,
+      useNativeDriver: true, 
     }).start();
   };
 
   // 회전 값 인터폴레이션
   const rotate = rotateAnim.interpolate({
-    inputRange: [0, 1], // 입력 범위는 0에서 1
-    outputRange: ["0deg", "360deg"], // 출력 범위는 0도에서 360도
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
   });
 
   // 애니메이션 스타일
   const rotationStyles = {
     transform: [{ rotate }],
   };
-  // 배너
-  return (
+
+  return ( // 상단 헤더 부분 화면
     <View>
       <View style={styles.header}>
         <TouchableOpacity onPress={startRotation}>
@@ -67,6 +67,7 @@ function header() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   header: {
     marginTop: 50,

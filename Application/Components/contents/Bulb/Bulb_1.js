@@ -3,29 +3,31 @@ import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, Switch, Alert } from "react-native";
 
 function Bulb_1({ isLedOn }) {
+  // 첫 번째 LED
   const [ledState, setLedState] = useState(isLedOn);
 
+  // LED 상태 변경 관련 useEffect
   useEffect(() => {
     setLedState(isLedOn);
   }, [isLedOn]);
 
+  // LED 상태 관련 선언
   const handleToggle = async () => {
     const action = ledState ? "off" : "on";
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 1000);
 
+    // 서버 통신
     try {
-      const response = await fetch(
-        `http://172.20.10.3:5000/led/17/${action}`,
-        {
-          method: "POST",
-          signal: controller.signal,
-        }
-      );
+      const response = await fetch(`http://172.20.10.3:5000/led/17/${action}`, {
+        method: "POST",
+        signal: controller.signal,
+      });
       clearTimeout(timeoutId);
 
       const data = await response.json();
 
+      // 200의 반환 값 ON & 100의 반환 값 OFF 성공
       if (data === 200 || data === 100) {
         setLedState(!ledState); // LED 상태 토글
       } else {
@@ -37,7 +39,7 @@ function Bulb_1({ isLedOn }) {
     }
   };
 
-  return (
+  return ( // 전구 1 화면 표시
     <View style={styles.light_box}>
       <Image
         source={
@@ -61,6 +63,7 @@ function Bulb_1({ isLedOn }) {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   light_box: {
     flexDirection: "column",

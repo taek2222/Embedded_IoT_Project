@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 
-function List_Contents() {
+function List_Contents() { // 리스트 화면 부분
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { // Spring boot 서버에 리스트 데이터 요청
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -26,10 +26,10 @@ function List_Contents() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString) => { // 출력 리스트 화면 변수들 설정
     const date = new Date(dateString);
     const year = date.getFullYear();
-    const month = date.getMonth() + 1; // getMonth()는 0부터 시작
+    const month = date.getMonth() + 1;
     const day = date.getDate();
     let hours = date.getHours();
     const minutes = date.getMinutes();
@@ -37,7 +37,7 @@ function List_Contents() {
     const ampm = hours >= 12 ? "PM" : "AM";
 
     hours = hours % 12;
-    hours = hours ? hours : 12; // 0시는 12로 표시
+    hours = hours ? hours : 12;
     const minutesPadded = minutes < 10 ? "0" + minutes : minutes;
     const secondsPadded = seconds < 10 ? "0" + seconds : seconds;
 
@@ -58,7 +58,7 @@ function List_Contents() {
     );
   };
 
-  return (
+  return ( // 리스트 표시 화면
     <View style={styles.List_Contents}>
       <Image
         source={require("../assets/contents/list.png")}
@@ -75,6 +75,7 @@ function List_Contents() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   List_Contents: {
     justifyContent: "center",

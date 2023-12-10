@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from "react-native";
 
-function Door() {
+function Door() { // 문 관리 및 제어
   const [doorStatus, setDoorStatus] = useState("닫힘"); // 문의 상태를 나타내는 상태 변수
 
   const getDoorStatusStyle = () => {
@@ -11,6 +11,7 @@ function Door() {
     };
   };
 
+  // 문 모터 서버 통신
   const sendMotorControl = (action) => {
     fetch('http://172.20.10.3:6000/control_motor', {
       method: 'POST',
@@ -19,6 +20,7 @@ function Door() {
       },
       body: JSON.stringify({ action }),
     })
+    // Json 반환 값이 성공일 경우는 2차 감지 센서의 작동으로 정상적으로 '닫힘' '열림' 상태
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
@@ -36,7 +38,7 @@ function Door() {
     });
   }
 
-  return (
+  return ( // 문 '열기' '닫기' 버튼 및 상태 변환 화면
     <View>
       <Text style={styles.door_font}>문</Text>
       <View style={styles.door_border}>
@@ -64,6 +66,7 @@ function Door() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   door_border: {
     width: 160,

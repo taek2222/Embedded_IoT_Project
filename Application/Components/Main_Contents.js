@@ -6,14 +6,14 @@ import Temperature_Fine_dust from "./Temperature_Fine_dust.js";
 import Humidity_Door from "./Humiditiy_Door.js";
 import Hot_cold_fan from "./contents/Hot_cold_fan.js";
 
-const DATA = [
+const DATA = [ // Flatlist 사용을 위한 데이터 배열 생성
   { id: "1", Component: Bulb },
   { id: "2", Component: Temperature_Fine_dust },
   { id: "3", Component: Humidity_Door },
   { id: "4", Component: Hot_cold_fan },
 ];
 
-function Main_Contents() {
+function Main_Contents() { // 메인 화면 IoT 표시
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
@@ -31,6 +31,7 @@ function Main_Contents() {
   );
 };
 
+// 스타일 정의
 const styles = StyleSheet.create({
   item: {
     flexDirection: "row",

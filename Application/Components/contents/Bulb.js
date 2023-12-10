@@ -5,9 +5,10 @@ import Bulb_1 from "./Bulb/Bulb_1.js";
 import Bulb_2 from "./Bulb/Bulb_2.js";
 import Bulb_3 from "./Bulb/Bulb_3.js";
 
-function Bulb() {
+function Bulb() { // LED 1, 2, 3 관리 및 ALL 제어
   const [isAllOn, setIsAllOn] = useState(false);
 
+  // ALL ON 서버 통신
   const handleAllOn = async () => {
     try {
       const response = await fetch("http://172.20.10.3:5000/led/all/on", {
@@ -21,6 +22,7 @@ function Bulb() {
     }
   };
 
+    // ALL OFF 서버 통신
   const handleAllOff = async () => {
     try {
       const response = await fetch("http://172.20.10.3:5000/led/all/off", {
@@ -34,9 +36,9 @@ function Bulb() {
     }
   };
 
-  return (
-    <View style={styles.light_border}>
-      <View style={{ flexDirection: "row" }}>
+  return ( // 전구 1, 2, 3 화면 표시 및 ALL 기능 버튼 
+    <View style={styles.light_border}> 
+      <View style={{ flexDirection: "row" }}> 
         <Bulb_1 isLedOn={isAllOn} />
         <View style={styles.line} />
         <Bulb_2 isLedOn={isAllOn} />
@@ -61,9 +63,9 @@ function Bulb() {
   );
 }
 
+// 스타일 정의
 const styles = StyleSheet.create({
   light_border: {
-    // LED 박스
     width: 340,
     height: 220,
     marginTop: 20,
@@ -72,16 +74,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   line: {
-    height: "70%", // 선의 높이
+    height: "70%",
     marginVertical: 30,
     marginLeft: 14,
-    width: 4, // 선의 너비
-    backgroundColor: "gray", // 선의 색
+    width: 4,
+    backgroundColor: "gray",
     borderRadius: 100,
   },
   buttonImage: {
-    width: 140, // 적절한 크기로 조절
-    height: 50, // 적절한 크기로 조절
+    width: 140,
+    height: 50,
     marginTop: 12,
     marginHorizontal: 6
   },

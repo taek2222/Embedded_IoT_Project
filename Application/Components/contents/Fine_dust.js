@@ -2,16 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 
-function Fine_dust() {
+function Fine_dust() { // 미세먼지 데이터 표시 
   const [weatherData, setWeatherData] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { // Spring boot 서버 통신
     const fetchWeatherData = () => {
       fetch('http://172.20.10.2:8080/api/weather/fine_dust')
           .then(response => response.json())
           .then(data => {
             setWeatherData(data);
-            console.log("새로운 데이터 미세먼지", data);
+            console.log("[데이터] 미세먼지", data);
             setTimeout(fetchWeatherData, 3000); // 3초 마다 예약
           })
     };
@@ -22,7 +22,7 @@ function Fine_dust() {
 
 const isDataLoaded = weatherData && weatherData != null && weatherData != null;
 
-  return (
+  return ( // 미세먼지 화면 표시
     <View>
       <Text style={styles.fine_dust_font}>실내 미세먼지</Text>
       <View style={styles.fine_dust_border}>
@@ -40,8 +40,7 @@ const isDataLoaded = weatherData && weatherData != null && weatherData != null;
   );
 }
 
-
-
+// 스타일 정의
 const styles = StyleSheet.create({
   fine_dust_border: {
     // 미세먼지 박스
