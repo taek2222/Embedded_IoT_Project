@@ -18,9 +18,12 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
 |✔️ Back - Front|✔️ Hardware|
 
 ## ⚒️ 기술 스택
+<p align="center">
+  <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/b6bd133f-1aca-4683-aefa-7b81006abcb1" alt="Backend" style="width:70%; height:auto;">
+  <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/f55d46e8-3a82-46b2-a4af-d10aaa5126f2" alt="Frontend" style="width:70%; height:auto;">
+  <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/58d3a0d0-262b-4b42-bc49-5587ede25e68" alt="Hardware" style="width:70%; height:auto;">
+</p>
 
-![Backend](https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/b6bd133f-1aca-4683-aefa-7b81006abcb1)
-![Frontend](https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/f55d46e8-3a82-46b2-a4af-d10aaa5126f2)
-![Hardware](https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/58d3a0d0-262b-4b42-bc49-5587ede25e68)
+
 
 ## 🔗 시스템 구조도
