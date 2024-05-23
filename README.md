@@ -50,9 +50,9 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
 <table style="width:100%; text-align:center;">
   <thead>
     <tr>
-      <th><strong>3D 모델링 작업_1</strong></th>
-      <th><strong>3D 모델링 작업_2</strong></th>
-      <th><strong>실물 3D 모델</strong></th>
+      <th><strong>3D 모델링</strong></th>
+      <th><strong>3D 모델링</strong></th>
+      <th><strong>3D 모델</strong></th>
     </tr>
   </thead>
   <tr>
