@@ -39,7 +39,7 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
       <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/7c2f16b0-2c3a-4291-8ddc-3fdd726fb65b" alt="Main Application">
     </td>
     <td>
-      <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/d49c7680-e40e-483d-886b-5f58a7c06a04" alt="application_cctv">
+      <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/323e86bb-efcb-4059-aae8-c29e06587d7c" alt="application_cctv">
     </td>
     <td>
       <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/788f425a-55e4-489f-a8d2-32ff94ce0b71" alt="CCTV Application">
@@ -75,11 +75,11 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
 ## 🔨 프로젝트 기능
 ### LED ON / OFF 제어
 
-### | 온도 | 미세먼지 | 습도 | 측정 및 평균 데이터 모니터링
+### | 온도 | 미세먼지 | 습도 | 측정 및 평균 데이터 모니터링 
 
-### 문 열기 / 닫기 제어
+### 문 열기 / 닫기 제어 
 
-### 냉온풍기 ON / OFF 제어
+### 냉온풍기 ON / OFF 제어 
 
 ### CCTV 기반 침입자 감지
 
