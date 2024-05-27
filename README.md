@@ -34,7 +34,7 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
   </thead>
   <tr>
     <td>
-      <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/7c2f16b0-2c3a-4291-8ddc-3fdd726fb65b" alt="Main Application">
+      <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/0b63434e-678d-498b-9b9d-84232c7f704b" alt="Main Application">
     </td>
     <td>
       <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/323e86bb-efcb-4059-aae8-c29e06587d7c" alt="application_cctv">
