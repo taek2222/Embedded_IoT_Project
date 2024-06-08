@@ -11,16 +11,22 @@
 
 </p>
 
+<br>
+
 ## 📖 프로젝트 소개
 RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 데이터를 저장할 수 있는 시스템을 구축한 것입니다. <br><br>
 이를 통해 다양한 기능을 원격으로 제어하고 실시간으로 모니터링할 수 있습니다. <br><br>
 간단한 체험을 통해 실생활에서 사용되는 IoT 시스템을 간접적으로 경험할 수 있도록 설계되었습니다.
+
+<br>
 
 ## 🧑‍🤝‍🧑 팀원 소개
 |<img src="https://avatars.githubusercontent.com/u/118153233?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/135509685?v=4" width="150" height="150"/>|
 |:-:|:-:|
 |[@taek2222](https://github.com/taek2222)|[@reinwook](https://github.com/reinwook)|
 |✔️ Back - Front|✔️ Hardware - Model|
+
+<br>
 
 ## 📺 프로젝트 구성
 
@@ -78,6 +84,8 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
   </tr>
 </table>
 
+<br>
+
 ## 🔨 프로젝트 기능 
 ### LED ON / OFF 제어 🚨
  - **APP 통한 LED 조작** : Flask 웹 프레임워크를 사용해 GPIO핀 연결된 LED ON/OFF 제어 기능.
@@ -103,6 +111,8 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
  - **스크린샷 기능** : APP의 제어로 API 통신으로 현재 상태를 캡처하여 파일로 저장할 수 있는 기능을 제공.
  - **감지 기록** : 감지 시 DB에 날짜 및 시간을 기록해 탐지 시간을 기록.
 
+<br>
+
 ## ⚒️ 기술 스택
 <p align="center">
   <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/b6bd133f-1aca-4683-aefa-7b81006abcb1" alt="Backend" style="width:70%; height:auto;">
@@ -110,4 +120,6 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
 </p>
 
 ## 🔗 시스템 구조도
-
+<p align="center">
+  <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/a9166038-8730-4953-ad32-913f5331996f" alt="아키텍처">
+</p>
