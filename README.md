@@ -36,6 +36,8 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
     <tr>
       <th><strong>Main 화면</strong></th>
       <th><strong>평균 리포트 화면</strong></th>
+      <th><strong>CCTV 화면</strong></th>
+      <th><strong>Record 화면</strong></th>
     </tr>
   </thead>
   <tr>
@@ -45,14 +47,6 @@ RoT 프로젝트는 무선 네트워크를 통해 하드웨어를 제어하고 �
     <td>
       <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/323e86bb-efcb-4059-aae8-c29e06587d7c" alt="application_cctv">
     </td>
-  </tr>
-    <thead>
-      <tr>
-        <th><strong>CCTV 화면</strong></th>
-        <th><strong>Record 화면</strong></th>
-      </tr>
-    </thead>
-  <tr>
     <td>
       <img src="https://github.com/taek2222/Embedded_IoT_Project/assets/118153233/788f425a-55e4-489f-a8d2-32ff94ce0b71" alt="CCTV Application">
     </td>
